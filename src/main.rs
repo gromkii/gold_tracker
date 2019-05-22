@@ -22,6 +22,8 @@ fn main() {
 
     println!("Currency: {:?}", c.get_currency());
     println!("{}", c.get_gold());
+    println!("{}", c.get_silver());
+    println!("{}", c.get_copper());
 }
 
 

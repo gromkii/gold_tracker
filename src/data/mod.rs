@@ -13,12 +13,15 @@ impl Currency {
     format!("{}gp", self.gold_held)
   }
 
-  pub fn get_currency(&self) -> Vec<u16> {
-    let mut v: Vec<u16> = Vec::new();
-    v.push(self.gold_held);
-    v.push(self.silver_held);
-    v.push(self.copper_held);
+  pub fn get_silver(&self) -> String {
+    format!("{}sp", self.silver_held)
+  }
 
-    v
+  pub fn get_copper(&self) -> String { 
+    format!("{}cp", self.copper_held)
+  }
+
+  pub fn get_currency(&self) -> Vec<u16> {
+    vec![self.gold_held, self.silver_held, self.copper_held]
   }
 }
