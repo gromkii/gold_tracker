@@ -27,10 +27,12 @@ fn init() {
     let c: Currency = Currency::new(total_gold, total_silver, total_copper);
 
     println!("Currency: {:?}", c.get_currency());
-    println!("{}", c.get_gold());
-    println!("{}", c.get_silver());
-    println!("{}", c.get_copper());
 
+    input_loop();
+    
+}
+
+fn input_loop() {
     let mut user_command: Command = Command::Init;
     while user_command != Command::Exit {
         println!("Enter command (add, subtract, exit)");

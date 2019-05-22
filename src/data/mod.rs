@@ -21,7 +21,11 @@ impl Currency {
     format!("{}cp", self.copper_held)
   }
 
-  pub fn get_currency(&self) -> Vec<u16> {
-    vec![self.gold_held, self.silver_held, self.copper_held]
+  pub fn get_currency(&self) -> Vec<String> {
+    vec![
+      self.get_gold(),
+      self.get_silver(),
+      self.get_copper()
+    ]
   }
 }
