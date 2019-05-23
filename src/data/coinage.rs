@@ -17,7 +17,6 @@ impl Coinage {
       Coin::Gold => self.gold,
       Coin::Silver => self.silver,
       Coin::Copper => self.copper,
-      _ => panic!("Invalid coinage")
     }
   }
 
@@ -26,7 +25,6 @@ impl Coinage {
       Coin::Gold => self.gold = amount,
       Coin::Silver => self.silver = amount,
       Coin::Copper => self.copper = amount,
-      _ => panic!("Invalid coinage")
     }
   }
 }
