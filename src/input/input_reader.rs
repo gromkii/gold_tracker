@@ -1,7 +1,7 @@
 use std::io;
 
-pub fn get_parsed_input() -> u16 {
-    parse_u16(get_input())
+pub fn get_parsed_input() -> u32 {
+    parse_u32(get_input())
 }
 
 pub fn get_input() -> String {
@@ -13,8 +13,8 @@ pub fn get_input() -> String {
     input
 }
 
-pub fn parse_u16(input: String) -> u16 {
+pub fn parse_u32(input: String) -> u32 {
     let trim_input = input.trim();
-    trim_input.parse::<u16>()
+    trim_input.parse::<u32>()
         .expect("Failed to parse input.")
 }

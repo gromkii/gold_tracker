@@ -1,1 +1,1 @@
-pub mod gold_purse;
+pub mod coinage;
