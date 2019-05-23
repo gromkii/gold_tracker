@@ -15,7 +15,13 @@ fn main() {
 fn input_loop() {
     let mut user_command: Command = Command::Init;
     let coin: Vec<u32> = init_gold();
-    let c: Coinage = Coinage::new(coin[0], coin[1], coin[2]);
+    let mut c: Coinage = Coinage::new(coin[0], coin[1], coin[2]);
+
+    println!("Current coinage: {:?}", c.get_coinage());
+
+    println!("Current gold: {}", c.get_gold());
+
+    c.set_gold(44);
 
     println!("Current coinage: {:?}", c.get_coinage());
     

@@ -6,8 +6,17 @@ pub struct Coinage {
 
 // Methods
 impl Coinage {
+
   pub fn get_coinage(&self) -> Vec<u32> {
     vec![self.gold, self.silver, self.copper]
+  }
+
+  pub fn get_gold(&self) -> u32 {
+    self.gold
+  }
+
+  pub fn set_gold(&mut self, update_gold: u32) {
+    self.gold = update_gold;
   }
 }
 
