@@ -1,12 +1,13 @@
 //! main.rs
 
 mod input;
-mod data;
-
 use input::input_reader;
 use input::command;
 use input::command::Command;
+
+mod data;
 use data::coinage::Coinage;
+use data::coinage::Coin;
 
 fn main() {
     input_loop();
@@ -17,13 +18,9 @@ fn input_loop() {
     let coin: Vec<u32> = init_gold();
     let mut c: Coinage = Coinage::new(coin[0], coin[1], coin[2]);
 
-    println!("Current coinage: {:?}", c.get_coinage());
-
-    println!("Current gold: {}", c.get_gold());
-
-    c.set_gold(44);
-
-    println!("Current coinage: {:?}", c.get_coinage());
+    c.set_coinage(Coin::Gold, 34);
+    
+    println!("Gold: {}", c.get_coinage(Coin::Gold));
     
     while user_command != Command::Exit {
         println!("Enter command (add, subtract, exit)");

@@ -4,19 +4,30 @@ pub struct Coinage {
   copper: u32,
 }
 
+pub enum Coin {
+  Gold,
+  Silver,
+  Copper,
+}
+
 // Methods
 impl Coinage {
-
-  pub fn get_coinage(&self) -> Vec<u32> {
-    vec![self.gold, self.silver, self.copper]
+  pub fn get_coinage(&self, coin: Coin) -> u32 {
+    match coin {
+      Coin::Gold => self.gold,
+      Coin::Silver => self.silver,
+      Coin::Copper => self.copper,
+      _ => panic!("Invalid coinage")
+    }
   }
 
-  pub fn get_gold(&self) -> u32 {
-    self.gold
-  }
-
-  pub fn set_gold(&mut self, update_gold: u32) {
-    self.gold = update_gold;
+  pub fn set_coinage(&mut self, coin: Coin, amount: u32) {
+    match coin {
+      Coin::Gold => self.gold = amount,
+      Coin::Silver => self.silver = amount,
+      Coin::Copper => self.copper = amount,
+      _ => panic!("Invalid coinage")
+    }
   }
 }
 
