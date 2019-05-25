@@ -29,4 +29,11 @@ pub fn parse_coin(input: String) -> Coin {
       "cp" | "copper" => Coin::Copper,
       _ => panic!("Invalid coinage")
     }
-  }
+}
+
+pub fn get_coin(operation: &str, input: String) -> Coin {
+        println! ("{} what? (gp, sp, cp): ", operation);
+        parse_coin(input)
+}
+
+  

@@ -7,7 +7,6 @@ use input::command::Command;
 
 mod data;
 use data::coinage::Coinage;
-use data::coin::Coin;
 
 mod math;
 
