@@ -4,11 +4,7 @@ pub struct Coinage {
   copper: u32,
 }
 
-pub enum Coin {
-  Gold,
-  Silver,
-  Copper,
-}
+use crate::data::coin::Coin;
 
 // Methods
 impl Coinage {

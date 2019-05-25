@@ -7,7 +7,7 @@ use input::command::Command;
 
 mod data;
 use data::coinage::Coinage;
-use data::coinage::Coin;
+use data::coin::Coin;
 
 fn main() {
     input_loop();
