@@ -8,7 +8,7 @@ use crate::data::coin::Coin;
 
 // Methods
 impl Coinage {
-  pub fn get_coinage(&self, coin: Coin) -> u32 {
+  pub fn get_coinage(&self, coin: &Coin) -> u32 {
     match coin {
       Coin::Gold => self.gold,
       Coin::Silver => self.silver,
@@ -17,13 +17,17 @@ impl Coinage {
     }
   }
 
-  pub fn set_coinage(&mut self, coin: Coin, amount: u32) {
+  pub fn set_coinage(&mut self, coin: &Coin, amount: u32) {
     match coin {
       Coin::Gold => self.gold = amount,
       Coin::Silver => self.silver = amount,
       Coin::Copper => self.copper = amount,
       _ => panic!("Invalid coinage")
     }
+  }
+
+  pub fn list_coinage(&self) -> String {
+    format!("{}gp, {}sp, {}cp", self.gold, self.silver, self.copper)
   }
 }
 

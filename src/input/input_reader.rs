@@ -1,5 +1,7 @@
 use std::io;
 
+use crate::data::coin::Coin;
+
 pub fn get_parsed_input() -> u32 {
     parse_u32(get_input())
 }
@@ -18,3 +20,13 @@ pub fn parse_u32(input: String) -> u32 {
     trim_input.parse::<u32>()
         .expect("Failed to parse input.")
 }
+
+pub fn parse_coin(input: String) -> Coin {
+    let trim_input = input.trim();
+    match trim_input.as_ref() {
+      "gp" | "gold" => Coin::Gold,
+      "sp" | "silver" => Coin::Silver,
+      "cp" | "copper" => Coin::Copper,
+      _ => panic!("Invalid coinage")
+    }
+  }
