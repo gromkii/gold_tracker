@@ -2,13 +2,14 @@
 
 mod input;
 use input::input_reader;
+use input::input_reader::get_parsed_input as parsed_input;
 use input::command;
 use input::command::Command;
 
 mod data;
 use data::coinage::Coinage;
-
-mod math;
+use data::coin_held::CoinHeld;
+use data::coin::Coin;
 
 fn main() {
     input_loop();
@@ -16,8 +17,7 @@ fn main() {
 
 fn input_loop() {
     let mut user_command: Command = Command::Init;
-    let coin: Vec<u32> = init_gold();
-    let mut c: Coinage = Coinage::new(coin[0], coin[1], coin[2]);
+    let mut c: CoinHeld = init_gold();
     
     while user_command != Command::Exit {
         println!("Enter command (add, subtract, exit)");
@@ -26,15 +26,17 @@ fn input_loop() {
     }
 }
 
-fn init_gold() -> Vec<u32> {
+fn init_gold() -> CoinHeld {
     println!("Enter amount of Gold: ");
-    let gold: u32 = input_reader::get_parsed_input();
+    let gold = Coinage::new(Coin::Gold, parsed_input());
+    
     println!("Enter amount of Silver: ");
-    let silver: u32 = input_reader::get_parsed_input();
+    let silver: Coinage = Coinage::new(Coin::Silver, parsed_input());
+    
     println!("Enter amount of Copper: ");
-    let copper: u32 = input_reader::get_parsed_input();
+    let copper: Coinage = Coinage::new(Coin::Copper, parsed_input());
 
-    vec!(gold, silver, copper)
+    CoinHeld::new(gold, silver, copper)
 }
 
 

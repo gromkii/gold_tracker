@@ -1,39 +1,30 @@
+use super::coin::Coin;
+
 pub struct Coinage {
-  gold: u32,
-  silver: u32,
-  copper: u32,
+  pub coin_type: Coin,
+  pub amount: u32,
 }
 
-use crate::data::coin::Coin;
-
-// Methods
 impl Coinage {
-  pub fn get_coinage(&self, coin: &Coin) -> u32 {
-    match coin {
-      Coin::Gold => self.gold,
-      Coin::Silver => self.silver,
-      Coin::Copper => self.copper,
-      _ => panic!("Invalid coinage")
-    }
+  pub fn get_amount(&self) -> u32 {
+    self.amount
   }
 
-  pub fn set_coinage(&mut self, coin: &Coin, amount: u32) {
-    match coin {
-      Coin::Gold => self.gold = amount,
-      Coin::Silver => self.silver = amount,
-      Coin::Copper => self.copper = amount,
-      _ => panic!("Invalid coinage")
-    }
+  pub fn set_amount(&mut self, amount: u32) {
+      self.amount = amount;
   }
 
-  pub fn list_coinage(&self) -> String {
-    format!("{}gp, {}sp, {}cp", self.gold, self.silver, self.copper)
+  pub fn add_amount(&mut self, update: u32) {
+    self.amount + update;
+  }
+
+  pub fn sub_amount(&mut self, update: u32) {
+    self.amount - update;
   }
 }
 
-// Constructor
 impl Coinage {
-  pub fn new(gold: u32, silver: u32, copper: u32) -> Coinage {
-    Coinage { gold, silver, copper }
+  pub fn new(coin_type: Coin, amount: u32) -> Coinage {
+    Coinage { coin_type, amount }
   }
 }

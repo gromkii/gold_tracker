@@ -1,12 +1,12 @@
 //! command.rs
 //! Handles user input, and dispatches events.
 
-use crate::data::coinage::Coinage;
 use crate::data::coin::Coin;
+use crate::data::coinage::Coinage;
+use crate::data::coin_held::CoinHeld;
 
 use crate::input_reader;
-
-use crate::math::set_coin;
+use crate::input_reader::get_coin;
 
 #[derive(PartialEq)]
 pub enum Command {
@@ -42,30 +42,39 @@ pub fn get_command(input: String) -> Command {
   }
 }
 
-pub fn handle_command(command: &Command, coinage: &mut Coinage) {
+pub fn handle_command(command: &Command, coin_held: &mut CoinHeld) {
   match command {
     Command::Init => handle_init(),
-    Command::Add => handle_math(coinage, command),
-    Command::Subtract => handle_math(coinage, command),
+    Command::Add => handle_math(command, coin_held),
+    Command::Subtract => handle_math(command, coin_held),
+    Command::List => handle_list(&coin_held),
     Command::Exit => handle_exit(),
     Command::Error => handle_error(),
-    Command::List => handle_list(coinage),
   }
 }
 
 fn handle_init() {
-  println!("Initializing Prompt");
+  println!("Initializing CLI");
 }
 
-fn handle_math(c: &mut Coinage, command: &Command) {
-  println!("{} what?", command.to_string());
-  let coin: &Coin = &input_reader::get_coin("Add", input_reader::get_input());
-  
-  println!("Amount");
+fn handle_math(command: &Command, coin_held: &mut CoinHeld) {
+  println!("Coin type: ");
+  let coin = get_coin(command.to_string(), input_reader::get_input());
+
+  let coinage: &Coinage = match coin {
+    Coin::Gold => &coin_held.gold,
+    Coin::Silver => &coin_held.silver,
+    Coin::Copper => &coin_held.copper,
+  };
+
+  println!("Amount to {}", command.to_string());
   let amount = input_reader::parse_u32(input_reader::get_input());
-  set_coin(c, coin, amount, &command);
-  
-  println!("{}", c.list_coinage());
+
+  if command == &Command::Add {
+    coinage.add_amount(amount);
+  } else if command == &Command::Subtract {
+    coinage.sub_amount(amount);
+  }
 }
 
 fn handle_exit() {
@@ -73,9 +82,9 @@ fn handle_exit() {
 }
 
 fn handle_error() {
-  println!("Invalid Command");
+  println!("Invalid command");
 }
 
-fn handle_list(coinage: &Coinage) {
-  println!("{}", coinage.list_coinage());
-}
+fn handle_list(coin_held: &CoinHeld) {
+  println!("{}", coin_held.list_coinage());
+} 
