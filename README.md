@@ -1,4 +1,4 @@
-# gold_tracker ![crates.io v1.0.1](https://img.shields.io/badge/crates.io-v0.1.1-orange.svg)
+# gold_tracker ![crates.io v1.0.2](https://img.shields.io/badge/crates.io-v0.1.1-orange.svg)
 A cli tool to help you keep track of your currency in D&D.
 
 ## Installation
