@@ -60,7 +60,7 @@ fn handle_init() {
 fn handle_math(command: &Command, coin_held: &mut CoinHeld) {
   println!("Coin type: ");
   let coin: Coin = get_coin(command.to_string(), input_reader::get_input());
-  let coinage: &mut Coinage = &mut coin_held.get_coinage(&coin);
+  let coinage: &mut Coinage = coin_held.get_coinage_mut(&coin);
 
   println!("Amount to {}", command.to_string());
   let amount = input_reader::parse_u32(input_reader::get_input());
