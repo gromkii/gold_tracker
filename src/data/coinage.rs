@@ -6,14 +6,6 @@ pub struct Coinage {
 }
 
 impl Coinage {
-  pub fn get_amount(&self) -> u32 {
-    self.amount
-  }
-
-  pub fn set_amount(&mut self, amount: u32) {
-      self.amount = amount;
-  }
-
   pub fn add_amount(&mut self, update: u32) {
     self.amount += update;
   }
