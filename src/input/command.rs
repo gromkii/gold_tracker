@@ -59,13 +59,8 @@ fn handle_init() {
 
 fn handle_math(command: &Command, coin_held: &mut CoinHeld) {
   println!("Coin type: ");
-  let coin = get_coin(command.to_string(), input_reader::get_input());
-
-  let coinage: &Coinage = match coin {
-    Coin::Gold => &coin_held.gold,
-    Coin::Silver => &coin_held.silver,
-    Coin::Copper => &coin_held.copper,
-  };
+  let coin: Coin = get_coin(command.to_string(), input_reader::get_input());
+  let coinage: &mut Coinage = &mut coin_held.get_coinage(&coin);
 
   println!("Amount to {}", command.to_string());
   let amount = input_reader::parse_u32(input_reader::get_input());

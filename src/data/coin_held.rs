@@ -8,11 +8,11 @@ pub struct CoinHeld {
 }
 
 impl CoinHeld {
-  pub fn get_coinage(&self, coin: &Coin) -> Coinage {
+  pub fn get_coinage(&mut self, coin: &Coin) -> &mut Coinage {
     match coin {
-      Coin::Gold => self.gold,
-      Coin::Silver => self.silver,
-      Coin::Copper => self.copper,
+      Coin::Gold => &mut self.gold,
+      Coin::Silver => &mut self.silver,
+      Coin::Copper => &mut self.copper,
     }
   }
 

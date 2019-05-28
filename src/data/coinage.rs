@@ -15,11 +15,11 @@ impl Coinage {
   }
 
   pub fn add_amount(&mut self, update: u32) {
-    self.amount + update;
+    self.amount += update;
   }
 
   pub fn sub_amount(&mut self, update: u32) {
-    self.amount - update;
+    self.amount -= update;
   }
 }
 
